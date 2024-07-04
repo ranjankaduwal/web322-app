@@ -6,7 +6,7 @@ No part of this assignment has been copied manually or electronically from any o
 Name: Ranjan Kaduwal
 Student ID: 126578228
 Date: 3 July, 2024
-Vercel Web App URL: 
+Vercel Web App URL: https://web322-app322.vercel.app/
 GitHub Repository URL: https://github.com/ranjankaduwal/web322-app.git
 
 ********************************************************************************/ 
