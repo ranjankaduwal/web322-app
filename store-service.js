@@ -5,25 +5,27 @@ No part of this assignment has been copied manually or electronically from any o
 
 Name: Ranjan Kaduwal
 Student ID: 126578228
-Date: 1 July, 2024
+Date: 3 July, 2024
 Vercel Web App URL: 
 GitHub Repository URL: 
 
 ********************************************************************************/ 
 const fs = require('fs');
+const path = require('path');
+
 let items = [];
 let categories = [];
 
 module.exports.initialize = function() {
     return new Promise((resolve, reject) => {
-        fs.readFile('./data/items.json', 'utf8', (err, data) => {
+        fs.readFile(path.join(__dirname, 'data', 'items.json'), 'utf8', (err, data) => {
             if (err) {
-                reject('unable to read file');
+                reject('unable to read file: items.json');
             } else {
                 items = JSON.parse(data);
-                fs.readFile('./data/categories.json', 'utf8', (err, data) => {
+                fs.readFile(path.join(__dirname, 'data', 'categories.json'), 'utf8', (err, data) => {
                     if (err) {
-                        reject('unable to read file');
+                        reject('unable to read file: categories.json');
                     } else {
                         categories = JSON.parse(data);
                         resolve();
