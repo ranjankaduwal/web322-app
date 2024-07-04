@@ -7,7 +7,7 @@ Name: Ranjan Kaduwal
 Student ID: 126578228
 Date: 3 July, 2024
 Vercel Web App URL: 
-GitHub Repository URL: 
+GitHub Repository URL: https://github.com/ranjankaduwal/web322-app.git
 
 ********************************************************************************/ 
 const express = require('express');
