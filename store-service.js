@@ -1,13 +1,13 @@
 /*********************************************************************************
-WEB322 – Assignment 02
+WEB322 – Assignment 03
 I declare that this assignment is my own work in accordance with Seneca Academic Policy.  
 No part of this assignment has been copied manually or electronically from any other source (including 3rd party web sites) or distributed to other students.
 
 Name: Ranjan Kaduwal
 Student ID: 126578228
-Date: 3 July, 2024
-Vercel Web App URL: 
-GitHub Repository URL: 
+Date: 15 July, 2024
+Vercel Web App URL: https://web322-app322.vercel.app/
+GitHub Repository URL: https://github.com/ranjankaduwal/web322-app.git
 
 ********************************************************************************/ 
 const fs = require('fs');
@@ -63,6 +63,53 @@ module.exports.getCategories = function() {
             reject('no results returned');
         } else {
             resolve(categories);
+        }
+    });
+};
+
+module.exports.addItem = function(itemData) {
+    return new Promise((resolve, reject) => {
+        if (itemData.published === undefined) {
+            itemData.published = false;
+        } else {
+            itemData.published = true;
+        }
+
+        itemData.id = items.length + 1;
+        items.push(itemData);
+        resolve(itemData);
+    });
+};
+
+module.exports.getItemsByCategory = function(category) {
+    return new Promise((resolve, reject) => {
+        const filteredItems = items.filter(item => item.category == category);
+        if (filteredItems.length === 0) {
+            reject('no results returned');
+        } else {
+            resolve(filteredItems);
+        }
+    });
+};
+
+module.exports.getItemsByMinDate = function(minDateStr) {
+    return new Promise((resolve, reject) => {
+        const filteredItems = items.filter(item => new Date(item.postDate) >= new Date(minDateStr));
+        if (filteredItems.length === 0) {
+            reject('no results returned');
+        } else {
+            resolve(filteredItems);
+        }
+    });
+};
+
+module.exports.getItemById = function(id) {
+    return new Promise((resolve, reject) => {
+        const item = items.find(item => item.id == id);
+        if (item) {
+            resolve(item);
+        } else {
+            reject('no result returned');
         }
     });
 };
