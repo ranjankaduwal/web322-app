@@ -249,6 +249,8 @@ app.post('/items/add', upload.single("featureImage"), (req, res) => {
         upload(req).then((uploaded) => {
             processItem(uploaded.url);
         });
+    } else if (req.body.imageUrl) {
+        processItem(req.body.imageUrl);
     } else {
         processItem("");
     }
